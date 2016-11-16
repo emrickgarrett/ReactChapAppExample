@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import Message from './MessageComponents.jsx';
 
 class App extends React.Component{
 	constructor(){
@@ -35,6 +37,7 @@ class App extends React.Component{
 					{this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
 				</tbody>
 			</table>
+			<Message userImage='img/example.jpg' userId='0' messageBody='Hello World! This is an example of a message!' />
 		</div>
 		);	
 	}
