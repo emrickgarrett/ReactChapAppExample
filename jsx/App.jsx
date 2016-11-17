@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Message from './MessageComponents.jsx';
+import ChatContainer from './ChatContainer.jsx';
 
 class App extends React.Component{
 	constructor(){
@@ -32,12 +33,7 @@ class App extends React.Component{
 		return(
 		<div>
 			<Header/>
-			<table>
-				<tbody>
-					{this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
-				</tbody>
-			</table>
-			<Message userImage='img/example.jpg' userId='0' messageBody='Hello World! This is an example of a message!' />
+			<ChatContainer />
 		</div>
 		);	
 	}
