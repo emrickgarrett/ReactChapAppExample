@@ -14,21 +14,27 @@ class Message extends React.Component{
 			images: {
 				width:'50px',
 				height:'50px',
-				display:'inline'
+				float:'left',
+				borderRadius: '25px',
+				border: '1px solid ' + this.props.userColor,
 			},
 			messageBody: {
-				display:'inline',
+				float:'left',
 				minWidth: '200px',
 				maxWidth: '800px',
-				width: '100%',
+				fontSize: '1.1em',
+				marginTop: '15px',
+				marginLeft: '25px',
+				display:'block',
+				color:this.props.userColor,
 			}
 		}
 
 		return (
-			<div>
+			<p>
 				<MessageProfile style={styles.images}  imageSrc={this.props.userImage} onClick = {() => this.profileClick()} />
 				<MessageBody style={styles.messageBody} messageBody={this.props.messageBody}  />
-			</div>
+			</p>
 		);
 	}
 
