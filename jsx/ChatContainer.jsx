@@ -32,7 +32,16 @@ class ChatContainer extends React.Component{
 			]
 		}
 	}
-
+	addChatMessage(message){
+		var newDummyData = this.state.dummyData;
+		newDummyData.push({
+			"id": this.state.dummyData.length+1,
+			"image":"images/default_pic.jpg",
+			"messageBody": message,
+			"userColor": "red"
+		})
+		this.setState({dummyData: newDummyData});
+	}
 	render(){
 
 		var style = {
@@ -55,7 +64,7 @@ class ChatContainer extends React.Component{
 						{this.state.dummyData.map((message, i) => <ChatMessage key = {i} data = {message} />)}
 					</tbody>
 				</table>
-				<MessageUserInput />
+				<MessageUserInput addChatMessage={this.addChatMessage.bind(this)} />
 			</div>
 		);
 	}

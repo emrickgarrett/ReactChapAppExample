@@ -5,7 +5,12 @@ class MessageUserInput extends React.Component{
 	constructor(){
 		super();
 	}
-
+	submitMessage(event){
+		//alert(document.getElementById("chatInput").value);
+		//push it to the chat_list
+		this.props.addChatMessage(document.getElementById("chatInput").value);
+		document.getElementById("chatInput").value = "";
+	}
 	render(){
 
 		var styles = {
@@ -41,7 +46,7 @@ class MessageUserInput extends React.Component{
 		return(
 			<div style={styles.container}>
 				<ChatInput style={styles.message} />
-				<ChatSubmitButton style={styles.messageButton}/>
+				<ChatSubmitButton style={styles.messageButton} onClick={this.submitMessage.bind(this)}/>
 			</div>
 		);
 	}
@@ -49,13 +54,13 @@ class MessageUserInput extends React.Component{
 
 function ChatInput(props){
 	return(
-		<input style={props.style} type='text' name='message'/>
+		<input id='chatInput' style={props.style} type='text' name='message'/>
 	);
 }
 
 function ChatSubmitButton(props){
 	return(
-		<input style={props.style} type='button' name='submit' value='Send'/>
+		<input style={props.style} type='button' name='submit' value='Send' onClick={props.onClick}/>
 	);
 }
 

@@ -31,10 +31,10 @@ class Message extends React.Component{
 		}
 
 		return (
-			<p>
+			<td>
 				<MessageProfile style={styles.images}  imageSrc={this.props.userImage} onClick = {() => this.profileClick()} />
 				<MessageBody style={styles.messageBody} messageBody={this.props.messageBody}  />
-			</p>
+			</td>
 		);
 	}
 
