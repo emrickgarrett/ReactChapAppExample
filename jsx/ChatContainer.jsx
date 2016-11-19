@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Message from './MessageComponents.jsx';
+import MessageUserInput from './MessageUserInput.jsx';
 
 class ChatContainer extends React.Component{
 	constructor(){
@@ -33,13 +34,28 @@ class ChatContainer extends React.Component{
 	}
 
 	render(){
+
+		var style = {
+			container: {
+				width:'50%',
+				height:'100%',
+				margin:'auto',
+				border:'1px solid black',
+				borderRadius: '10px',
+			},
+			messages:{
+				padding:'10px 10px 0 10px'
+			}
+		}
+
 		return(
-			<div>
-				<table>
+			<div style={style.container}>
+				<table style={style.messages}>
 					<tbody>
 						{this.state.dummyData.map((message, i) => <ChatMessage key = {i} data = {message} />)}
 					</tbody>
 				</table>
+				<MessageUserInput />
 			</div>
 		);
 	}

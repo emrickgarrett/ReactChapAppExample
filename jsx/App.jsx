@@ -19,8 +19,15 @@ class App extends React.Component{
 
 class Header extends React.Component{
 	render(){
+
+		var style = {
+			headerText: {
+				margin: 'auto'
+			}
+		}
+
 		return (
-			<div>
+			<div style={style.headerText}>
 				<h1>React Chat Application</h1>
 			</div>
 		);
