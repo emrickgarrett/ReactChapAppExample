@@ -6,10 +6,17 @@ class MessageUserInput extends React.Component{
 		super();
 	}
 	submitMessage(event){
-		//alert(document.getElementById("chatInput").value);
 		//push it to the chat_list
-		this.props.addChatMessage(document.getElementById("chatInput").value);
-		document.getElementById("chatInput").value = "";
+		var value = document.getElementById("chatInput").value
+		if(value.length > 0){
+			this.props.addChatMessage(value);
+			document.getElementById("chatInput").value = "";
+		}
+	}
+	enterKeyPressed(event){
+		if(event.keyCode == 13){//Enter Key
+			this.submitMessage(event);
+		}
 	}
 	render(){
 
@@ -45,7 +52,7 @@ class MessageUserInput extends React.Component{
 
 		return(
 			<div style={styles.container}>
-				<ChatInput style={styles.message} />
+				<ChatInput style={styles.message} onKeyUp={this.enterKeyPressed.bind(this)}/>
 				<ChatSubmitButton style={styles.messageButton} onClick={this.submitMessage.bind(this)}/>
 			</div>
 		);
@@ -54,7 +61,7 @@ class MessageUserInput extends React.Component{
 
 function ChatInput(props){
 	return(
-		<input id='chatInput' style={props.style} type='text' name='message'/>
+		<input id='chatInput' style={props.style} type='text' name='message' onKeyUp={props.onKeyUp}/>
 	);
 }
 
